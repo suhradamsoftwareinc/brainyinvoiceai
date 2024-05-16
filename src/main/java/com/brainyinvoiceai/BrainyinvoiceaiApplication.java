@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BrainyinvoiceaiApplication {
 
 	public static void main(String[] args) { 
-		SpringApplication.run(BrainyinvoiceaiApplication.class, args);
+		SpringApplication.run(BrainyinvoiceaiApplication.class, args); 
 	}
 
 }
