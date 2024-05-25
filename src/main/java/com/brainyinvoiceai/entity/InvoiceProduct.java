@@ -13,14 +13,13 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "invoice_prodcut")
+@Table(name = "invoice_product")
 @Getter
 @Setter
 @ToString
 public class InvoiceProduct {
 
 	@Id
-	@Column(name = "invoice_prodcut_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long invoiceProductId;
 	

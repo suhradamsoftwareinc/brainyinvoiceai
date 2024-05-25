@@ -20,7 +20,6 @@ import lombok.ToString;
 public class Bank {
 
 	@Id
-	@Column(name = "bank_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long bankId;
 	

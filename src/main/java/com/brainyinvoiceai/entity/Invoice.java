@@ -22,7 +22,6 @@ import lombok.ToString;
 public class Invoice {
 
 	@Id
-	@Column(name = "invoice_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer invoiceId;
 

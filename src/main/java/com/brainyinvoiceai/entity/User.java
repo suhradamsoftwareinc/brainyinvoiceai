@@ -1,43 +1,45 @@
 package com.brainyinvoiceai.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-@Entity
-@Table(name = "users")
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
-@ToString
-public class User {
-	
-	@Id
-	@Column(name = "user_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long userId;
-	
-	@Column(name = "email", nullable = false, unique = true, length = 20)
-	private String email;
-	
-	@Column(name = "password", nullable = false, length = 20)
-	private String password;
-	
-	@Column(name = "first_name", nullable = false, length = 20)
-	private String firstName;
-	
-	@Column(name = "last_name", nullable = false, length = 20)
-	private String lastName;
-	
-	@ManyToOne
-    @JoinColumn(name="org_id", nullable=false)
-	private Organization orgId;
-	
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name="users")
+public class User
+{
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable=false)
+    private String name;
+
+    @Column(nullable=false, unique=true)
+    private String email;
+
+    @Column(nullable=false)
+    private String password;
+    
+    @Column(nullable=false)
+    private Long orgId;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @JoinTable(
+            name="users_roles",
+            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
+            inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
+    private List<Role> roles = new ArrayList<>();
+
 }

@@ -6,10 +6,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+@Builder
 @Entity
 @Table(name = "organization")
 @Getter
@@ -18,12 +20,11 @@ import lombok.ToString;
 public class Organization {
 
 	@Id
-	@Column(name = "org_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long orgId;
 	
 	@Column(name = "org_name", nullable = false, unique = true, length = 20)
-	private String org_name;
+	private String orgName;
 	
 	@Column(name = "address", nullable = false, length = 35)
 	private String address;
@@ -57,6 +58,4 @@ public class Organization {
     
     @Column(name = "image", nullable = false, unique = true, length = 20)
 	private String image;
-
-	
 }

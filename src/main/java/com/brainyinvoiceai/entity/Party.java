@@ -19,7 +19,6 @@ import lombok.ToString;
 @ToString
 public class Party {
 	    @Id
-	    @Column(name = "party_id")
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Integer partyId;
 	    
