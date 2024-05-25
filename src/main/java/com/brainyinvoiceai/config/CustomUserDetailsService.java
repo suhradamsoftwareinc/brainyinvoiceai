@@ -37,11 +37,7 @@ public class CustomUserDetailsService implements UserDetailsService {
       
         
         if (user != null) {
-        	org.springframework.security.core.userdetails.User usr = new org.springframework.security.core.userdetails.User(user.getEmail(),
-                    user.getPassword(),
-                    authorities);
-        	
-        	return usr;
+        	return CustomUserDetails.build(user);
         }else{
             throw new UsernameNotFoundException("Invalid username or password.");
         }
