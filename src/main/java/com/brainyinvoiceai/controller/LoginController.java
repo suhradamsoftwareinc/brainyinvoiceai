@@ -1,5 +1,6 @@
 package com.brainyinvoiceai.controller;
 
+import java.util.Locale;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.brainyinvoiceai.dto.UserDto;
 import com.brainyinvoiceai.entity.Organization;
 import com.brainyinvoiceai.entity.Role;
@@ -29,8 +32,8 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 
-	@GetMapping("/login")
-	public String login() {
+	@GetMapping(path = { "/login" , "/" })
+	public String login(Locale locale) {
 		return "login";
 	}
 
@@ -60,11 +63,11 @@ public class LoginController {
 		return "start";
 	}
 
-	@PostMapping("/register/save")
-	public String registration(@Valid @ModelAttribute("user") UserDto user, BindingResult result, Model model) {
+	@PostMapping("/register")
+	public String registration(@Valid @ModelAttribute("user") UserDto user, BindingResult result, Model model, RedirectAttributes atts) {
 		User existing = userService.findByEmail(user.getEmail());
 		if (existing != null) {
-			result.rejectValue("email", null, "There is already an account registered with that email");
+			result.rejectValue("email", "registration.validation.email");
 		}
 		if (result.hasErrors()) {
 			model.addAttribute("user", user);
@@ -73,9 +76,5 @@ public class LoginController {
 		userService.saveUser(user);
 		return "redirect:/register?success";
 	}
-
-	@GetMapping("/dashboard")
-	public String dashboard() {
-		return "dashboard";
-	}
+	
 }

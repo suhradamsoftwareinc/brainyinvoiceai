@@ -17,7 +17,6 @@ import java.util.List;
 @Table(name="users")
 public class User
 {
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +31,10 @@ public class User
     @Column(nullable=false)
     private String password;
     
-    @Column(nullable=false)
-    private Long orgId;
+    @ManyToOne
+    @JoinColumn(name="org_id", nullable=false)
+	private Organization orgId;
+    
 
     @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(

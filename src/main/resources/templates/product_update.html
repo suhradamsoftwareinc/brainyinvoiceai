@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="fragments/layout">
+   <div layout:fragment="content" class="container">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+         <h1 class="h2" th:text="#{menu.product}"></h1>
+      </div>
+      <br />
+      <form class="row g-12">
+         <div class="row mb-3">
+            <div class="col-md-6">
+               <label for="producttitle" class="form-label" th:text="#{product.saveOrEdit.productTitle}"></label>
+               <div class="input-group has-validation">
+                  <input type="text" class="form-control" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required />
+                  <div class="invalid-feedback">
+                     Please choose a username.
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-3">
+				<label for="validationServerUsername" class="form-label" th:text="#{product.saveOrEdit.productTitle}"></label>
+				<select class="form-select" aria-label="Default select example">
+				  <option selected>Select Product Type</option>
+				  <option value="1">Job</option>
+				  <option value="2">Product</option>
+				 
+				</select>
+
+               
+            </div>
+            
+         </div>
+         
+         <div class="row mb-12">
+            <div class="col-md-3">
+               <label for="validationServerUsername" class="form-label" th:text="#{product.saveOrEdit.unitPrice}"></label>
+               <div class="input-group has-validation">
+                  <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required />
+                  <div class="invalid-feedback">
+                     Please choose a username.
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-3">
+               <label for="validationServerUsername" class="form-label" th:text="#{product.saveOrEdit.hsnCode}"></label>
+               <div class="input-group has-validation">
+                  <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required />
+                  <div class="invalid-feedback">
+                     Please choose a username.
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-3">
+               <label for="validationServerUsername" class="form-label" th:text="#{product.saveOrEdit.taxRate}"></label>
+               <div class="input-group has-validation">
+                  <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required />
+                  <div class="invalid-feedback">
+                     Please choose a username.
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row mb-3">
+            <div class="col-md-12">
+               <label for="validationServerUsername" class="form-label" th:text="#{product.saveOrEdit.description}"></label>
+               <div class="input-group has-validation">
+                  <textarea type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required></textarea>
+                  <div class="invalid-feedback">
+                     Please choose a username.
+                  </div>
+               </div>
+            </div>
+            
+         </div>
+         
+         <div class="row mb-3">
+            <div class="col-12">
+               <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+         </div>
+      </form>
+      
+   </div>

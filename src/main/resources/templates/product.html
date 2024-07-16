@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="fragments/layout">
+   <div layout:fragment="content" class="container">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+         <h1 class="h2" th:text="#{menu.product}"></h1>
+      </div>
+      <br />
+       <a th:href="@{/product/create}" th:text="#{create}"></a>
+      
+   </div>

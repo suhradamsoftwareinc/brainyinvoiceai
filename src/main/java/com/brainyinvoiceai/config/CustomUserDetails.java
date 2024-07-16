@@ -20,15 +20,18 @@ public class CustomUserDetails implements UserDetails {
 
     @JsonIgnore
     private String password;
+    
+    private String orgName;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public CustomUserDetails(String username, String fullName, String password,
+    public CustomUserDetails(String username, String fullName, String password, String orgName,
         Collection<? extends GrantedAuthority> authorities) {
       this.username = username;
       this.fullName = fullName;
       this.password = password;
       this.authorities = authorities;
+      this.orgName = orgName;
     }
 
     public static CustomUserDetails build(User user) {
@@ -40,6 +43,7 @@ public class CustomUserDetails implements UserDetails {
           user.getEmail(), 
           user.getName(),
           user.getPassword(), 
+          user.getOrgId().getOrgName(),
           authorities);
     }
 
@@ -95,6 +99,10 @@ public class CustomUserDetails implements UserDetails {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+
+	public String getOrgName() {
+		return orgName;
 	}
     
     

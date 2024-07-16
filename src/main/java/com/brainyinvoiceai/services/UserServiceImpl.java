@@ -5,6 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.brainyinvoiceai.dto.UserDto;
+import com.brainyinvoiceai.entity.Organization;
 import com.brainyinvoiceai.entity.Role;
 import com.brainyinvoiceai.entity.User;
 import com.brainyinvoiceai.repository.RoleRepository;
@@ -38,7 +39,10 @@ public class UserServiceImpl implements UserService {
         //encrypt the password once we integrate spring security
         //user.setPassword(userDto.getPassword());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        user.setOrgId(1l);
+        Organization organization = Organization.builder()
+        		.orgId(1l)
+        		.build();       
+        user.setOrgId(organization);
         Role role = roleRepository.findByName("ROLE_ADMIN");
         if(role == null){
             role = checkRoleExist();

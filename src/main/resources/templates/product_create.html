@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="fragments/layout">
+   <div layout:fragment="content" class="container">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+         <h1 class="h2" th:text="#{menu.product}"></h1>
+      </div>
+      <br />
+      <form class="row g-12" method="post" th:action="@{/product/create}" th:object="${product}">
+         <div class="row mb-3">
+            <div class="col-md-6">
+               <label class="form-label" th:text="#{product.saveOrEdit.productTitle}"></label>
+               <div class="input-group has-validation">
+                  <input type="text" class="form-control" 
+                  aria-describedby="inputGroupPrepend3"
+                  th:classappend="*{title} ? 'is-invalid' "
+                  th:field="*{title}" />
+                  <div class="" th:classappend="*{title} ? 'invalid-feedback'">
+					  <span th:errors="*{title}" th:if="${#fields.hasErrors('title')}"></span>
+				  </div>
+               </div>
+            </div>
+            <div class="col-md-3">
+				<label class="form-label" th:text="#{product.saveOrEdit.productType}"></label>
+				<div class="input-group has-validation">
+					<select class="form-select" th:field="*{type}" th:classappend="*{type} ? 'is-invalid' ">
+					  <option value="" selected> <span th:text="#{product.saveOrEdit.productType.selectDefault}"></span></option>
+					  <option value="1"><span th:text="#{product.saveOrEdit.productType.job}"></span></option>
+					  <option value="2"><span th:text="#{product.saveOrEdit.productType.product}"></span></option>
+					</select>
+					<div class="" th:classappend="*{type} ? 'invalid-feedback'">
+						  <span th:errors="*{type}" th:if="${#fields.hasErrors('type')}"></span>
+					  </div>
+				  </div>
+               
+            </div>
+            
+         </div>
+         
+        <div class="row mb-12">
+            <div class="col-md-3">
+               <label class="form-label" th:text="#{product.saveOrEdit.unitPrice}"></label>
+               <div class="input-group has-validation">
+               <input type="text" class="form-control" 
+                  aria-describedby="inputGroupPrepend3"
+                  th:classappend="*{unitPrice} == 0.0  ? 'is-invalid' "
+                  th:field="*{unitPrice}" />
+                  <div class="" th:classappend="*{unitPrice} ? 'invalid-feedback'">
+					  <span th:errors="*{unitPrice}" th:if="${#fields.hasErrors('unitPrice')}"></span>
+				  </div>
+				 </div>
+            </div>
+            <div class="col-md-3">
+               <label class="form-label" th:text="#{product.saveOrEdit.hsnCode}"></label>
+               <div class="input-group has-validation">
+               <input type="text" class="form-control" 
+                  aria-describedby="inputGroupPrepend3"
+                  th:classappend="*{hsnCode} ? 'is-invalid' "
+                  th:field="*{hsnCode}" />
+                  <div class="" th:classappend="*{hsnCode} ? 'invalid-feedback'">
+					  <span th:errors="*{hsnCode}" th:if="${#fields.hasErrors('hsnCode')}"></span>
+				  </div>
+				 </div>
+            </div>
+            <div class="col-md-3">
+               <label class="form-label" th:text="#{product.saveOrEdit.taxRate}"></label>
+               <div class="input-group has-validation">
+               <input type="text" class="form-control" 
+                  aria-describedby="inputGroupPrepend3"
+                  th:classappend="*{taxRate} ? 'is-invalid' "
+                  th:field="*{taxRate}" />
+                  <div class="" th:classappend="*{taxRate} ? 'invalid-feedback'">
+					  <span th:errors="*{taxRate}" th:if="${#fields.hasErrors('taxRate')}"></span>
+				  </div>
+				 </div>
+            </div>
+         </div>
+         <div class="row mb-3">
+            <div class="col-md-12">
+               <label class="form-label" th:text="#{product.saveOrEdit.description}"></label>
+               <div class="input-group has-validation">
+               <input type="text" class="form-control" 
+                  aria-describedby="inputGroupPrepend3"
+                  th:classappend="*{description} ? 'is-invalid' "
+                  th:field="*{description}" />
+                  <div class="" th:classappend="*{description} ? 'invalid-feedback'">
+					  <span th:errors="*{description}" th:if="${#fields.hasErrors('description')}"></span>
+				  </div>
+				 </div>
+            </div>
+            
+         </div>
+         
+         <div class="row mb-3">
+            <div class="col-12">
+               <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+         </div>
+      </form>
+      
+   </div>
